@@ -7,3 +7,4 @@ $(() => {
   }, { host: 'div' });
   $(window).on('pagehide', () => unmount());
 });
+
