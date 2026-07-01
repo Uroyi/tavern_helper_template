@@ -1,0 +1,640 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "世界": {
+      "type": "object",
+      "properties": {
+        "当前时间": {
+          "type": "string"
+        },
+        "当前地点": {
+          "type": "string"
+        },
+        "近期事务": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "事务名"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "description": "事务描述"
+          }
+        }
+      },
+      "required": [
+        "当前时间",
+        "当前地点",
+        "近期事务"
+      ]
+    },
+    "主线": {
+      "type": "object",
+      "properties": {
+        "章节": {
+          "type": "number"
+        },
+        "路线": {
+          "type": "string",
+          "enum": [
+            "未选择",
+            "救赎",
+            "制裁"
+          ]
+        },
+        "第一章_任务完成数": {
+          "type": "number"
+        },
+        "第二章_下水道调查完成": {
+          "type": "boolean"
+        },
+        "第三章_真相揭露": {
+          "type": "boolean"
+        },
+        "第四章_完成": {
+          "type": "boolean"
+        },
+        "关键flag": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        }
+      },
+      "required": [
+        "章节",
+        "路线",
+        "第一章_任务完成数",
+        "第二章_下水道调查完成",
+        "第三章_真相揭露",
+        "第四章_完成",
+        "关键flag"
+      ]
+    },
+    "主角": {
+      "type": "object",
+      "properties": {
+        "属性": {
+          "type": "object",
+          "properties": {
+            "攻击力": {
+              "type": "number"
+            },
+            "防御力": {
+              "type": "number"
+            },
+            "魔力": {
+              "type": "number"
+            },
+            "生命值": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "攻击力",
+            "防御力",
+            "魔力",
+            "生命值"
+          ]
+        },
+        "金钱": {
+          "type": "number"
+        },
+        "物品栏": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "描述": {
+                "type": "string"
+              },
+              "数量": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "描述",
+              "数量"
+            ]
+          }
+        },
+        "打屁股统计": {
+          "type": "object",
+          "properties": {
+            "总次数": {
+              "type": "number"
+            },
+            "菲尔": {
+              "type": "number"
+            },
+            "艾莉西亚": {
+              "type": "number"
+            },
+            "赛拉": {
+              "type": "number"
+            },
+            "艾琳": {
+              "type": "number"
+            },
+            "米莉": {
+              "type": "number"
+            },
+            "露露": {
+              "type": "number"
+            },
+            "拉拉": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "总次数",
+            "菲尔",
+            "艾莉西亚",
+            "赛拉",
+            "艾琳",
+            "米莉",
+            "露露",
+            "拉拉"
+          ]
+        },
+        "成就": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        }
+      },
+      "required": [
+        "属性",
+        "金钱",
+        "物品栏",
+        "打屁股统计",
+        "成就"
+      ]
+    },
+    "菲尔": {
+      "type": "object",
+      "properties": {
+        "好感度": {
+          "type": "number"
+        },
+        "支线完成": {
+          "type": "object",
+          "properties": {
+            "SQ1": {
+              "type": "boolean"
+            },
+            "SQ2": {
+              "type": "boolean"
+            },
+            "SQ3": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "SQ1",
+            "SQ2",
+            "SQ3"
+          ]
+        },
+        "专属flag": {
+          "type": "object",
+          "properties": {
+            "日记被发现": {
+              "type": "boolean"
+            },
+            "特训完成": {
+              "type": "boolean"
+            },
+            "生日已过": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "日记被发现",
+            "特训完成",
+            "生日已过"
+          ]
+        }
+      },
+      "required": [
+        "好感度",
+        "支线完成",
+        "专属flag"
+      ]
+    },
+    "艾莉西亚": {
+      "type": "object",
+      "properties": {
+        "好感度": {
+          "type": "number"
+        },
+        "支线完成": {
+          "type": "object",
+          "properties": {
+            "SQ1": {
+              "type": "boolean"
+            },
+            "SQ2": {
+              "type": "boolean"
+            },
+            "SQ3": {
+              "type": "boolean"
+            },
+            "SQ4": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "SQ1",
+            "SQ2",
+            "SQ3",
+            "SQ4"
+          ]
+        },
+        "专属flag": {
+          "type": "object",
+          "properties": {
+            "夜间来访发现": {
+              "type": "boolean"
+            },
+            "赛拉的药水收到": {
+              "type": "boolean"
+            },
+            "教会祈祷目睹": {
+              "type": "boolean"
+            },
+            "咒语净化完成": {
+              "type": "boolean"
+            },
+            "已公开道歉": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "夜间来访发现",
+            "赛拉的药水收到",
+            "教会祈祷目睹",
+            "咒语净化完成",
+            "已公开道歉"
+          ]
+        }
+      },
+      "required": [
+        "好感度",
+        "支线完成",
+        "专属flag"
+      ]
+    },
+    "赛拉": {
+      "type": "object",
+      "properties": {
+        "好感度": {
+          "type": "number"
+        },
+        "支线完成": {
+          "type": "object",
+          "properties": {
+            "SQ1": {
+              "type": "boolean"
+            },
+            "SQ2": {
+              "type": "boolean"
+            },
+            "SQ3": {
+              "type": "boolean"
+            },
+            "SQ4": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "SQ1",
+            "SQ2",
+            "SQ3",
+            "SQ4"
+          ]
+        },
+        "专属flag": {
+          "type": "object",
+          "properties": {
+            "下水道初次交手": {
+              "type": "boolean"
+            },
+            "木剑训练完成": {
+              "type": "boolean"
+            },
+            "已断绝关系": {
+              "type": "boolean"
+            },
+            "已成工会教官": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "下水道初次交手",
+            "木剑训练完成",
+            "已断绝关系",
+            "已成工会教官"
+          ]
+        }
+      },
+      "required": [
+        "好感度",
+        "支线完成",
+        "专属flag"
+      ]
+    },
+    "米莉": {
+      "type": "object",
+      "properties": {
+        "好感度": {
+          "type": "number"
+        },
+        "支线完成": {
+          "type": "object",
+          "properties": {
+            "SQ1": {
+              "type": "boolean"
+            },
+            "SQ2": {
+              "type": "boolean"
+            },
+            "SQ3": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "SQ1",
+            "SQ2",
+            "SQ3"
+          ]
+        },
+        "专属flag": {
+          "type": "object",
+          "properties": {
+            "三重任务完成": {
+              "type": "boolean"
+            },
+            "情报网建立": {
+              "type": "boolean"
+            },
+            "大冒险完成": {
+              "type": "boolean"
+            },
+            "远程任务解锁": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "三重任务完成",
+            "情报网建立",
+            "大冒险完成",
+            "远程任务解锁"
+          ]
+        }
+      },
+      "required": [
+        "好感度",
+        "支线完成",
+        "专属flag"
+      ]
+    },
+    "艾琳": {
+      "type": "object",
+      "properties": {
+        "好感度": {
+          "type": "number"
+        },
+        "支线完成": {
+          "type": "object",
+          "properties": {
+            "SQ1": {
+              "type": "boolean"
+            },
+            "SQ2": {
+              "type": "boolean"
+            },
+            "SQ3": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "SQ1",
+            "SQ2",
+            "SQ3"
+          ]
+        },
+        "专属flag": {
+          "type": "object",
+          "properties": {
+            "看店任务完成": {
+              "type": "boolean"
+            },
+            "离家出走救援": {
+              "type": "boolean"
+            },
+            "独家情报获得": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "看店任务完成",
+            "离家出走救援",
+            "独家情报获得"
+          ]
+        }
+      },
+      "required": [
+        "好感度",
+        "支线完成",
+        "专属flag"
+      ]
+    },
+    "露露拉拉": {
+      "type": "object",
+      "properties": {
+        "好感度": {
+          "type": "number"
+        },
+        "支线完成": {
+          "type": "object",
+          "properties": {
+            "SQ1": {
+              "type": "boolean"
+            },
+            "SQ2": {
+              "type": "boolean"
+            },
+            "SQ3": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "SQ1",
+            "SQ2",
+            "SQ3"
+          ]
+        },
+        "选择分支": {
+          "type": "string",
+          "enum": [
+            "未选择",
+            "帮助露露",
+            "帮助拉拉"
+          ]
+        },
+        "专属flag": {
+          "type": "object",
+          "properties": {
+            "姐妹争吵目睹": {
+              "type": "boolean"
+            },
+            "父亲救援完成": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "姐妹争吵目睹",
+            "父亲救援完成"
+          ]
+        }
+      },
+      "required": [
+        "好感度",
+        "支线完成",
+        "选择分支",
+        "专属flag"
+      ]
+    },
+    "哈尼": {
+      "type": "object",
+      "properties": {
+        "好感度": {
+          "type": "number"
+        },
+        "支线完成": {
+          "type": "object",
+          "properties": {
+            "SQ1": {
+              "type": "boolean"
+            },
+            "SQ2": {
+              "type": "boolean"
+            },
+            "SQ3": {
+              "type": "boolean"
+            },
+            "SQ4": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "SQ1",
+            "SQ2",
+            "SQ3",
+            "SQ4"
+          ]
+        },
+        "专属flag": {
+          "type": "object",
+          "properties": {
+            "问卷完成": {
+              "type": "boolean"
+            },
+            "消费金额": {
+              "type": "number"
+            },
+            "真相之板已赠送": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "问卷完成",
+            "消费金额",
+            "真相之板已赠送"
+          ]
+        }
+      },
+      "required": [
+        "好感度",
+        "支线完成",
+        "专属flag"
+      ]
+    },
+    "玛丽亚": {
+      "type": "object",
+      "properties": {
+        "好感度": {
+          "type": "number"
+        },
+        "支线完成": {
+          "type": "object",
+          "properties": {
+            "SQ1": {
+              "type": "boolean"
+            },
+            "SQ2": {
+              "type": "boolean"
+            },
+            "SQ3": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "SQ1",
+            "SQ2",
+            "SQ3"
+          ]
+        },
+        "专属flag": {
+          "type": "object",
+          "properties": {
+            "废弃教会秘密": {
+              "type": "boolean"
+            },
+            "考试通过": {
+              "type": "boolean"
+            },
+            "瘟疫事件完成": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "废弃教会秘密",
+            "考试通过",
+            "瘟疫事件完成"
+          ]
+        }
+      },
+      "required": [
+        "好感度",
+        "支线完成",
+        "专属flag"
+      ]
+    }
+  },
+  "required": [
+    "世界",
+    "主线",
+    "主角",
+    "菲尔",
+    "艾莉西亚",
+    "赛拉",
+    "米莉",
+    "艾琳",
+    "露露拉拉",
+    "哈尼",
+    "玛丽亚"
+  ]
+}

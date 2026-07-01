@@ -1,0 +1,101 @@
+---
+卡片渲染规则:
+  - 你可以在回复中使用 XML 标签来触发前端卡片渲染，让信息展示更加美观和结构化。
+  - 每条回复至多使用一种卡片标签，标签应放在回复正文之前——先显示卡片，再写故事叙事内容。
+  - 如果当前场景不属于以下任何类型，则不应输出卡片标签，只输出正常的叙事内容。
+  - 输出标签时务必严格遵循格式，特别是属性值不能包含未转义的引号。
+
+  地点卡片 location_card:
+    trigger: 当玩家移动到新设施、新区域或场景发生明显变化时使用
+    type可选值: 工会, 酒馆, 旅店, 商店, 教会, 城门, 下水道, 野外
+    format: |-
+      <location_card type="酒馆">
+      <name>设施或地点名称</name>
+      <description>对该场景的感官氛围描写，50-100字</description>
+      </location_card>
+    example: |-
+      <location_card type="酒馆">
+      <name>醉龙亭</name>
+      <description>暖黄色的灯光洒在木质地板上，空气中飘着麦酒和炖菜的香气。今晚的酒馆格外热闹——几个冒险者正在角落比划着今天的猎物。</description>
+      </location_card>
+
+  角色卡片 character_card:
+    trigger: 当玩家初次遇见一个角色，或重要角色在剧情关键节点重新登场时使用
+    format: |-
+      <character_card name="角色名">
+      <role>角色身份/头衔</role>
+      <description>对该角色的外貌、气质和当前状态的观察描写，50-100字</description>
+      </character_card>
+    example: |-
+      <character_card name="赛拉">
+      <role>贵族侍从</role>
+      <description>她站在艾莉西亚身后半步的位置，一身深色劲装，腰间佩着细剑。与艾莉西亚的张扬不同，她的安静更像某种刻意维持的距离——目光锐利而克制。</description>
+      </character_card>
+
+  商店菜单 shop_menu:
+    trigger: 当玩家进入可消费设施（商店、旅店、酒馆等），需要展示可购买商品或可选服务时使用
+    format: |-
+      <shop_menu name="设施名称">
+      <item price="价格数字">商品或服务名称——简短描述</item>
+      <item price="价格数字">商品或服务名称——简短描述</item>
+      </shop_menu>
+    example: |-
+      <shop_menu name="稀奇屋">
+      <item price="1200">铁制长剑——标准的冒险者装备，锋利耐用</item>
+      <item price="800">回复药水×3——恢复少量生命值</item>
+      <item price="300">冒险者干粮包——七天的份量</item>
+      </shop_menu>
+
+  选项卡片 choices:
+    trigger: 当玩家面临需要做出选择的决策情境时使用。prompt属性简要描述当前情境并提出问题
+    format: |-
+      <choices prompt="描述当前情境和一个引导性问题">
+      <choice>选项一的具体行动描述</choice>
+      <choice>选项二的具体行动描述</choice>
+      <choice>选项三的具体行动描述</choice>
+      </choices>
+    note:
+      - 选项通常2-4个，应涵盖不同的行动方向
+      - 每个选项应是一个完整的动作描述句，玩家点击后会直接作为回复发送
+      - 避免过于相似的选项，让玩家有有意义的选择空间
+    example: |-
+      <choices prompt="看着眼前这位脸颊微红的贵族少女，你打算怎么做？">
+      <choice>假装没注意到她的表情，若无其事地继续对话</choice>
+      <choice>直接问她"你的脸怎么红了"——看她慌乱的样子一定很有趣</choice>
+      <choice>凑近一步，压低声音："你该不会是在想那天晚上的事吧？"</choice>
+      </choices>
+
+  任务卡片 quest_card:
+    trigger: 当玩家接取新任务、委托进度更新或任务状态发生重要变化时使用
+    difficulty可选值: 简单, 普通, 困难
+    format: |-
+      <quest_card title="任务名称" difficulty="难度等级" reward="报酬描述">
+      <objective>任务目标的具体描述，50-100字</objective>
+      </quest_card>
+    example: |-
+      <quest_card title="下水道调查" difficulty="普通" reward="800金币 + 经验值">
+      <objective>前往隆德尔城地下下水道，调查异常魔物活动的源头。据说最近有人看到奇怪的影子在排水口附近出没。</objective>
+      </quest_card>
+
+  打屁股结算 spank_card:
+    trigger: 每次完成一组打屁股后使用。一组指一个完整的打屁股回合（如"打了15下手掌"即为一组）。每一组打屁股结束后输出一张结算卡片。
+    format: |-
+      <spank_card round="回合编号" count="本组打了多少下" tool="使用的工具名称">
+      <color>臀部当前颜色描述</color>
+      <temperature>臀部体感温度描述</temperature>
+      </spank_card>
+    fields:
+      - "round: 当前场景中的第几轮打屁股（数字）"
+      - "count: 本组打了多少下（纯数字，不含单位）"
+      - "tool: 使用的工具，例如手掌、戒尺、木桨、皮带、发刷等"
+      - "color: 臀部颜色，例如白皙正常、微微泛粉、淡粉色、粉红色、红色、深红色等"
+      - "temperature: 臀部温度，例如正常体温、微微发热、温热发烫、滚烫如火、火辣刺痛等"
+    example: |-
+      <spank_card round="1" count="15" tool="手掌">
+      <color>淡粉色</color>
+      <temperature>微微发热</temperature>
+      </spank_card>
+    note:
+      - 每打完一组就输出一张结算卡片，不要等到全部打完再输出
+      - round 从1开始递增，同一场景内每打一组+1
+      - color 和 temperature 要根据打的次数和力度如实描写，体现递进关系

@@ -1,0 +1,137 @@
+# yaml-language-server: $schema=../../schema.json
+世界:
+  当前时间: 春日的清晨，微风和煦
+  当前地点: 隆德尔城门外
+  近期事务:
+    进城登记: 前往冒险者工会完成冒险者登记
+
+主线:
+  章节: 1
+  路线: 未选择
+  第一章_任务完成数: 0
+  第二章_下水道调查完成: false
+  第三章_真相揭露: false
+  第四章_完成: false
+  关键flag:
+    见过艾莉西亚城门出场: false
+    完成冒险者登记: false
+    完成设施引导: false
+    被赛拉击败: false
+    收到匿名信: false
+
+主角:
+  属性:
+    攻击力: 15
+    防御力: 10
+    魔力: 5
+    生命值: 100
+  金钱: 100
+  物品栏:
+    铁剑:
+      描述: 一把普通的铁制长剑，剑柄已经磨得有些光滑了——跟了自己不少年了
+      数量: 1
+  打屁股统计:
+    总次数: 0
+    菲尔: 0
+    艾莉西亚: 0
+    赛拉: 0
+    艾琳: 0
+    米莉: 0
+    露露: 0
+    拉拉: 0
+  成就: {}
+
+菲尔:
+  好感度: 50
+  支线完成:
+    SQ1: false
+    SQ2: false
+    SQ3: false
+  专属flag:
+    日记被发现: false
+    特训完成: false
+    生日已过: false
+
+艾莉西亚:
+  好感度: 0
+  支线完成:
+    SQ1: false
+    SQ2: false
+    SQ3: false
+    SQ4: false
+  专属flag:
+    夜间来访发现: false
+    赛拉的药水收到: false
+    教会祈祷目睹: false
+    咒语净化完成: false
+    已公开道歉: false
+
+赛拉:
+  好感度: 0
+  支线完成:
+    SQ1: false
+    SQ2: false
+    SQ3: false
+    SQ4: false
+  专属flag:
+    下水道初次交手: false
+    木剑训练完成: false
+    已断绝关系: false
+    已成工会教官: false
+
+米莉:
+  好感度: 10
+  支线完成:
+    SQ1: false
+    SQ2: false
+    SQ3: false
+  专属flag:
+    三重任务完成: false
+    情报网建立: false
+    大冒险完成: false
+    远程任务解锁: false
+
+艾琳:
+  好感度: 5
+  支线完成:
+    SQ1: false
+    SQ2: false
+    SQ3: false
+  专属flag:
+    看店任务完成: false
+    离家出走救援: false
+    独家情报获得: false
+
+露露拉拉:
+  好感度: 5
+  支线完成:
+    SQ1: false
+    SQ2: false
+    SQ3: false
+  选择分支: 未选择
+  专属flag:
+    姐妹争吵目睹: false
+    父亲救援完成: false
+
+哈尼:
+  好感度: 5
+  支线完成:
+    SQ1: false
+    SQ2: false
+    SQ3: false
+    SQ4: false
+  专属flag:
+    问卷完成: false
+    消费金额: 0
+    真相之板已赠送: false
+
+玛丽亚:
+  好感度: 5
+  支线完成:
+    SQ1: false
+    SQ2: false
+    SQ3: false
+  专属flag:
+    废弃教会秘密: false
+    考试通过: false
+    瘟疫事件完成: false
