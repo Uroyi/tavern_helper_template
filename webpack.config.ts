@@ -182,6 +182,28 @@ function tavern_sync(compiler: webpack.Compiler) {
   });
 }
 
+/**
+ * 自定义 webpack 插件：将 HtmlWebpackPlugin 生成的 script 标签从 <head> 移到 <body>。
+ *
+ * 解决 jQuery .load() 不执行 <head> 内 <script type="module"> 的问题：
+ * jQuery .load() 只用 innerHTML 解析响应，浏览器会剥离 <head> 标签，
+ * 导致内联的 webpack module script 被丢弃。将脚本放在 <body> 内可
+ * 确保 jQuery .load() 能找到并执行它。
+ */
+class MoveModuleScriptToBody {
+  apply(compiler: webpack.Compiler) {
+    compiler.hooks.compilation.tap('MoveModuleScriptToBody', (compilation: any) => {
+      const hooks = HtmlWebpackPlugin.getHooks(compilation);
+      hooks.alterAssetTagGroups.tapAsync('MoveModuleScriptToBody', (data: any, cb: any) => {
+        const scripts = data.headTags.filter((tag: any) => tag.tagName === 'script');
+        data.bodyTags.push(...scripts);
+        data.headTags = data.headTags.filter((tag: any) => tag.tagName !== 'script');
+        cb(null, data);
+      });
+    });
+  }
+}
+
 function parse_configuration(entry: Entry): (_env: any, argv: any) => webpack.Configuration {
   const should_obfuscate = fs
     .readFileSync(path.join(import.meta.dirname, entry.script), 'utf-8')
@@ -427,6 +449,7 @@ function parse_configuration(entry: Entry): (_env: any, argv: any) => webpack.Co
             scriptLoading: 'module',
             cache: false,
           }),
+          new MoveModuleScriptToBody(),
           new HtmlInlineScriptWebpackPlugin(),
           new MiniCssExtractPlugin(),
           new HTMLInlineCSSWebpackPlugin({

@@ -1,0 +1,47 @@
+- generic [ref=f17e1]:
+  - generic [ref=f17e5]:
+    - generic [ref=f17e6]:
+      - generic "AI Response Configuration" [ref=f17e8] [cursor=pointer]: 
+      - text:                                        + No items                         ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰                                  + No items      ☰ ☰ ☰ ☰ ☰ ☰ ☰  ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰  ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰  ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰                   +     No items 
+    - generic [ref=f17e9]:
+      - generic "API Connections" [ref=f17e11] [cursor=pointer]: 
+      - text:                                                                 
+    - generic [ref=f17e12]:
+      - generic "AI Response Formatting" [ref=f17e14] [cursor=pointer]: 
+      - text:                                               
+    - generic [ref=f17e15]:
+      - generic "World Info" [ref=f17e17] [cursor=pointer]: 
+      - text:                +     
+    - generic [ref=f17e18]:
+      - generic "User Settings" [ref=f17e20] [cursor=pointer]: 
+      - text:                                   
+    - generic [ref=f17e21]:
+      - generic "Change Background Image" [ref=f17e22]:
+        - generic [ref=f17e23] [cursor=pointer]: 
+      - text:       +    
+    - generic [ref=f17e24]:
+      - generic "Extensions" [ref=f17e26] [cursor=pointer]: 
+      - text:  
+    - generic [ref=f17e27]:
+      - generic "Persona Management" [ref=f17e29] [cursor=pointer]: 
+      - text:                
+    - generic [ref=f17e30]:
+      - generic "Character Management" [ref=f17e32] [cursor=pointer]: 
+      - text:                                            Group is empty.  No characters available         
+  - generic:                      +                                                                                +    + +                  
+  - generic:                  
+  - generic [ref=f17e33]:
+    - text: 
+    - generic [ref=f17e36]:
+      - text:  
+      - generic [ref=f17e37]:
+        - generic [ref=f17e39] [cursor=pointer]: 
+        - textbox "Not connected to API!" [ref=f17e40]
+        - generic [ref=f17e41]:       
+  - text:               
+  - dialog [active] [ref=f17e42]:
+    - generic [ref=f17e45]:
+      - img "SillyTavern Logo" [ref=f17e46]
+      - generic [ref=f17e47]: 
+      - heading "Initializing…" [level=2] [ref=f17e48]
+    - text: 

@@ -1,0 +1,203 @@
+- generic [active] [ref=f155e1]:
+  - generic [ref=f155e5]:
+    - generic [ref=f155e6]:
+      - button "" [ref=f155e49] [cursor=pointer]
+      - text:                                        + No items                         ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☐ ☰ ☐ ☰ ☐ ☰                                  + No items      ☰ ☰ ☰ ☰ ☰ ☰ ☰  ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰  ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰  ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰                   +     No items   X     *    *    *    *    *     *    *     *                             *     *     *         *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *    
+    - generic [ref=f155e9]:
+      - button "" [ref=f155e50] [cursor=pointer]
+      - text:                                                                        
+    - generic [ref=f155e12]:
+      - button "" [ref=f155e51] [cursor=pointer]
+      - text:                                               
+    - generic [ref=f155e15]:
+      - button "" [ref=f155e52] [cursor=pointer]
+      - text:                +     
+    - generic [ref=f155e18]:
+      - button "" [ref=f155e53] [cursor=pointer]
+      - text:                                   
+    - generic [ref=f155e21]:
+      - generic "更改背景图片" [ref=f155e54]:
+        - button "" [ref=f155e55] [cursor=pointer]
+      - text:       +                            
+    - generic [ref=f155e24]:
+      - button "" [ref=f155e56] [cursor=pointer]
+      - text:         +               +                                                                                                                                                                                +   + +  +     +        +        +        +                                                                                                                                                                                                                                                                                                                                 没有找到脚本              
+    - generic [ref=f155e27]:
+      - button "" [ref=f155e57] [cursor=pointer]
+      - text:                    
+    - generic [ref=f155e30]:
+      - button "" [ref=f155e58] [cursor=pointer]
+      - text:                                                     群聊暂无成员。          无可用角色                            
+  - generic:                      +                                                                                +    + +                  
+  - generic:                  
+  - generic [ref=f155e33]:
+    - generic [ref=f155e59]: 
+    - generic [ref=f155e34]:
+      - generic [ref=f155e60]:
+        - generic [ref=f155e61]:
+          - img "SillyTavern 徽标" [ref=f155e62]
+          - generic [ref=f155e63]: SillyTavern 1.18.0 'release' (51ad27fb8)
+          - text: 
+          - button "" [ref=f155e64] [cursor=pointer]:
+            - generic [ref=f155e65]: 
+          - button "" [ref=f155e66] [cursor=pointer]:
+            - generic [ref=f155e67]: 
+        - generic [ref=f155e68]:
+          - generic [ref=f155e69]: 最近的聊天
+          - generic [ref=f155e70]:
+            - button " 文档" [ref=f155e71] [cursor=pointer]:
+              - generic [ref=f155e72]: 
+              - generic [ref=f155e73]: 文档
+            - button " GitHub" [ref=f155e74] [cursor=pointer]:
+              - generic [ref=f155e75]: 
+              - generic [ref=f155e76]: GitHub
+            - button " Discord" [ref=f155e77] [cursor=pointer]:
+              - generic [ref=f155e78]: 
+              - generic [ref=f155e79]: Discord
+            - generic [ref=f155e80]: "|"
+            - button " 临时聊天" [ref=f155e81] [cursor=pointer]:
+              - generic [ref=f155e82]: 
+              - generic [ref=f155e83]: 临时聊天
+        - list [ref=f155e85]:
+          - listitem [ref=f155e86] [cursor=pointer]:
+            - 'generic "[Character] 暗中蠢动的阴影 File: 暗中蠢动的阴影.png" [ref=f155e87]':
+              - img "暗中蠢动的阴影" [ref=f155e88]
+            - generic [ref=f155e89]:
+              - generic [ref=f155e90]:
+                - generic "暗中蠢动的阴影 - 2026-07-02@17h00m25s758ms.jsonl" [ref=f155e91]:
+                  - strong [ref=f155e92]: 暗中蠢动的阴影
+                  - text: – 暗中蠢动的阴影 - 2026-07-02@17h00m25s758ms
+                - generic "2026年7月2日 18:13" [ref=f155e93]: 2026/7/2
+                - generic [ref=f155e94]:
+                  - button "" [ref=f155e95]:
+                    - generic [ref=f155e96]: 
+                  - button "" [ref=f155e97]:
+                    - generic [ref=f155e98]: 
+                  - button "" [ref=f155e99]:
+                    - generic [ref=f155e100]: 
+              - generic [ref=f155e101]:
+                - generic [ref=f155e102]
+                - generic [ref=f155e103]:
+                  - generic [ref=f155e104]:
+                    - generic [ref=f155e105]: 
+                    - generic [ref=f155e106]: "1"
+                    - text: "|"
+                  - generic [ref=f155e107]: 16.28KB
+          - listitem [ref=f155e108] [cursor=pointer]:
+            - 'generic "[Character] 伊甸园 File: 伊甸园.png" [ref=f155e109]':
+              - img "伊甸园" [ref=f155e110]
+            - generic [ref=f155e111]:
+              - generic [ref=f155e112]:
+                - generic "伊甸园 - 2026-06-30@03h18m14s884ms.jsonl" [ref=f155e113]:
+                  - strong [ref=f155e114]: 伊甸园
+                  - text: – 伊甸园 - 2026-06-30@03h18m14s884ms
+                - generic "2026年6月30日 03:51" [ref=f155e115]: 2026/6/30
+                - generic [ref=f155e116]:
+                  - button "" [ref=f155e117]:
+                    - generic [ref=f155e118]: 
+                  - button "" [ref=f155e119]:
+                    - generic [ref=f155e120]: 
+                  - button "" [ref=f155e121]:
+                    - generic [ref=f155e122]: 
+              - generic [ref=f155e123]:
+                - generic [ref=f155e124]
+                - generic [ref=f155e125]:
+                  - generic [ref=f155e126]:
+                    - generic [ref=f155e127]: 
+                    - generic [ref=f155e128]: "11"
+                    - text: "|"
+                  - generic [ref=f155e129]: 453.67KB
+          - listitem [ref=f155e130] [cursor=pointer]:
+            - 'generic "[Character] 呕吐内心的少女 File: 呕吐内心的少女.png" [ref=f155e131]':
+              - img "呕吐内心的少女" [ref=f155e132]
+            - generic [ref=f155e133]:
+              - generic [ref=f155e134]:
+                - generic "呕吐内心的少女 - 2026-06-28@13h20m15s328ms.jsonl" [ref=f155e135]:
+                  - strong [ref=f155e136]: 呕吐内心的少女
+                  - text: – 呕吐内心的少女 - 2026-06-28@13h20m15s328ms
+                - generic "2026年6月28日 13:20" [ref=f155e137]: 2026/6/28
+                - generic [ref=f155e138]:
+                  - button "" [ref=f155e139]:
+                    - generic [ref=f155e140]: 
+                  - button "" [ref=f155e141]:
+                    - generic [ref=f155e142]: 
+                  - button "" [ref=f155e143]:
+                    - generic [ref=f155e144]: 
+              - generic [ref=f155e145]:
+                - generic [ref=f155e146]
+                - generic [ref=f155e147]:
+                  - generic [ref=f155e148]:
+                    - generic [ref=f155e149]: 
+                    - generic [ref=f155e150]: "1"
+                    - text: "|"
+                  - generic [ref=f155e151]: 20.36KB
+          - button "" [ref=f155e152] [cursor=pointer]:
+            - generic [ref=f155e153]: 
+      - generic [ref=f155e154]:
+        - generic [ref=f155e155]:
+          - img [ref=f155e157] [cursor=pointer]
+          - generic [ref=f155e158]: "#0"
+        - generic [ref=f155e159]:
+          - generic [ref=f155e160]:
+            - generic [ref=f155e162]:
+              - generic [ref=f155e163]: Assistant
+              - text: 
+              - generic [ref=f155e164]: 2026年7月2日 18:14
+            - generic [ref=f155e165]:                
+            - text:       
+          - text:       
+          - generic [ref=f155e166]:
+            - paragraph [ref=f155e167]: 如果您已连接到一个 API，试着问我点什么吧！
+            - separator [ref=f155e168]
+            - paragraph [ref=f155e169]:
+              - strong [ref=f155e170]: 提示：
+              - text: 您可以通过角色设置中的 "更多…" 菜单将角色设为欢迎页面的助手。
+      - generic [ref=f155e172]:
+        - text:                               
+        - generic [ref=f155e174]:
+          - button " API 连接" [ref=f155e175] [cursor=pointer]:
+            - generic [ref=f155e176]: 
+            - generic [ref=f155e177]: API 连接
+          - button " 角色管理" [ref=f155e178] [cursor=pointer]:
+            - generic [ref=f155e179]: 
+            - generic [ref=f155e180]: 角色管理
+          - button " 扩展程序" [ref=f155e181] [cursor=pointer]:
+            - generic [ref=f155e182]: 
+            - generic [ref=f155e183]: 扩展程序
+      - generic [ref=f155e188]:
+        - button "" [ref=f155e189] [cursor=pointer]:
+          - generic [ref=f155e190]: 
+        - button "" [ref=f155e191] [cursor=pointer]:
+          - generic [ref=f155e192]: 
+        - button "" [ref=f155e193] [cursor=pointer]:
+          - generic [ref=f155e194]: 
+        - button "" [ref=f155e195] [cursor=pointer]:
+          - generic [ref=f155e196]: 
+        - button "" [ref=f155e197] [cursor=pointer]:
+          - generic [ref=f155e198]: 
+    - generic [ref=f155e36]:
+      - button "格式补全" [ref=f155e201] [cursor=pointer]
+      - text:  
+      - generic [ref=f155e37]:
+        - generic [ref=f155e38]:
+          - generic [ref=f155e39] [cursor=pointer]: 
+          - generic "扩展程序" [ref=f155e202] [cursor=pointer]: 
+        - textbox "输入想发送的消息，或输入 /? 获取帮助" [ref=f155e203]
+        - generic [ref=f155e41]:
+          - text:      
+          - generic "发送消息" [ref=f155e204] [cursor=pointer]: 
+  - text:                       1       
+  - generic [ref=f155e205]: 
+  - status [ref=f155e206]
+  - status [ref=f155e207]
+  - status [ref=f155e208]
+  - status [ref=f155e209]
+  - status [ref=f155e210]
+  - status [ref=f155e211]
+  - status [ref=f155e212]
+  - status [ref=f155e213]
+  - status [ref=f155e214]
+  - status [ref=f155e215]
+  - status [ref=f155e216]
+  - status [ref=f155e217]
+  - text:     

@@ -15,6 +15,7 @@
       <QuestCard v-else-if="segment.type === 'quest'" v-bind="segment.data" />
       <SpankCard v-else-if="segment.type === 'spank'" v-bind="segment.data" />
       <SideQuestEndCard v-else-if="segment.type === 'sidequest_end'" v-bind="segment.data" />
+      <StatusBarPanel v-else-if="segment.type === 'status_bar'" />
     </template>
     <!-- Fallback: no tags detected, render full message -->
     <NarrativeBox v-if="!hasAnyCard && context.message" :html="full_html" />
@@ -32,6 +33,7 @@ import QuestCard from './components/QuestCard.vue';
 import SpankCard from './components/SpankCard.vue';
 import SideQuestEndCard from './components/SideQuestEndCard.vue';
 import NarrativeBox from './components/NarrativeBox.vue';
+import StatusBarPanel from './components/StatusBarPanel.vue';
 
 const context = injectStreamingMessageContext();
 
@@ -61,7 +63,11 @@ interface TextSegment {
   html: string;
 }
 
-type Segment = CardSegment | TextSegment;
+interface StatusBarSegment {
+  type: 'status_bar';
+}
+
+type Segment = CardSegment | TextSegment | StatusBarSegment;
 
 // ── Card parsing helpers ─────────────────────────────────────────
 
@@ -191,6 +197,8 @@ function* findSpankCards(msg: string): Generator<CardSegment> {
 
 // ── Segments: parse all cards in document order ───────────────────
 
+const STATUS_PLACEHOLDER = '<StatusPlaceHolderImpl/>';
+
 const segments = computed<Segment[]>(() => {
   const msg = context.message;
   if (!msg) return [];
@@ -209,10 +217,38 @@ const segments = computed<Segment[]>(() => {
   // Sort by position in message
   cards.sort((a, b) => a.start - b.start);
 
-  // Build segments: interleave text and cards in document order
+  // Find all status placeholder positions in raw message
+  const placeholderPositions: number[] = [];
+  let searchPos = 0;
+  while (true) {
+    const idx = msg.indexOf(STATUS_PLACEHOLDER, searchPos);
+    if (idx === -1) break;
+    placeholderPositions.push(idx);
+    searchPos = idx + STATUS_PLACEHOLDER.length;
+  }
+
+  // Build segments: interleave text, cards, and status bar in document order
   const result: Segment[] = [];
   let pos = 0;
+  let placeholderIdx = 0;
+
   for (const card of cards) {
+    // Check for placeholder(s) between pos and card.start
+    while (placeholderIdx < placeholderPositions.length && placeholderPositions[placeholderIdx] < card.start) {
+      if (placeholderPositions[placeholderIdx] > pos) {
+        const text = msg.slice(pos, placeholderPositions[placeholderIdx]).trim();
+        if (text) {
+          result.push({
+            type: 'text',
+            html: colorizeQuotes(formatAsDisplayedMessage(text, { message_id: context.message_id })),
+          });
+        }
+      }
+      result.push({ type: 'status_bar' });
+      pos = placeholderPositions[placeholderIdx] + STATUS_PLACEHOLDER.length;
+      placeholderIdx++;
+    }
+
     // Text before this card
     if (card.start > pos) {
       const text = msg.slice(pos, card.start).trim();
@@ -226,6 +262,22 @@ const segments = computed<Segment[]>(() => {
     // The card itself
     result.push(card);
     pos = card.end;
+  }
+
+  // Remaining placeholders after last card
+  while (placeholderIdx < placeholderPositions.length) {
+    if (placeholderPositions[placeholderIdx] > pos) {
+      const text = msg.slice(pos, placeholderPositions[placeholderIdx]).trim();
+      if (text) {
+        result.push({
+          type: 'text',
+          html: formatAsDisplayedMessage(text, { message_id: context.message_id }),
+        });
+      }
+    }
+    result.push({ type: 'status_bar' });
+    pos = placeholderPositions[placeholderIdx] + STATUS_PLACEHOLDER.length;
+    placeholderIdx++;
   }
 
   // Trailing text after last card

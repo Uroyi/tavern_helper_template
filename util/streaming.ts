@@ -67,10 +67,6 @@ export function mountStreamingMessages(
     if (has_stoped) {
       return;
     }
-    // Skip individual renders if a full re-render is in progress
-    if (renderAllInProgress) {
-      return;
-    }
     if (destroyIfInvalid(message_id)) {
       return;
     }

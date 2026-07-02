@@ -1,0 +1,205 @@
+- generic [ref=f182e1]:
+  - generic [ref=f182e5]:
+    - generic [ref=f182e6]:
+      - button "" [ref=f182e49] [cursor=pointer]
+      - text:                                        + No items                         ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☑ ☰ ☐ ☰ ☐ ☰ ☐ ☰                                  + No items      ☰ ☰ ☰ ☰ ☰ ☰ ☰  ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰  ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰  ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰ ☰                   +     No items   X     *    *    *    *    *     *    *     *                             *     *     *         *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *     *    
+    - generic [ref=f182e9]:
+      - button "" [ref=f182e50] [cursor=pointer]
+      - text:                                                                        
+    - generic [ref=f182e12]:
+      - button "" [ref=f182e51] [cursor=pointer]
+      - text:                                               
+    - generic [ref=f182e15]:
+      - button "" [ref=f182e52] [cursor=pointer]
+      - text:                +     
+    - generic [ref=f182e18]:
+      - button "" [ref=f182e53] [cursor=pointer]
+      - text:                                   
+    - generic [ref=f182e21]:
+      - generic "更改背景图片" [ref=f182e54]:
+        - button "" [ref=f182e55] [cursor=pointer]
+      - text:       +                            
+    - generic [ref=f182e24]:
+      - button "" [ref=f182e56] [cursor=pointer]
+      - text:         +                                                                       +                                                                                                                                                                                                                +   + +  +     +        +        +        +                                                                                                                                                                                                                                                                                                                                                                                                       
+    - generic [ref=f182e27]:
+      - button "" [ref=f182e57] [cursor=pointer]
+      - text:                    
+    - generic [ref=f182e30]:
+      - button "" [ref=f182e58] [cursor=pointer]
+      - text:                                                     群聊暂无成员。          无可用角色                            
+  - generic:                      +                                                                                +    + +                  
+  - generic:                  
+  - generic [ref=f182e33]:
+    - generic [ref=f182e59]: 
+    - generic [ref=f182e34]:
+      - generic [ref=f182e60]:
+        - generic [ref=f182e61]:
+          - img [ref=f182e63] [cursor=pointer]
+          - generic [ref=f182e64]: "#0"
+        - button "" [ref=f182e65] [cursor=pointer]
+        - generic [ref=f182e66]:
+          - generic [ref=f182e67]:
+            - generic [ref=f182e69]:
+              - generic [ref=f182e70]: 暗中蠢动的阴影
+              - text: 
+              - generic [ref=f182e71]: 2026年7月2日 18:22
+            - generic [ref=f182e72]:
+              - button "" [ref=f182e73] [cursor=pointer]
+              - text:              
+              - button "" [ref=f182e74] [cursor=pointer]
+            - text:       
+          - text:       
+          - generic [ref=f182e77]:
+            - generic [ref=f182e79]:
+              - paragraph [ref=f182e80]:
+                - text: 春天的风吹过隆德尔城外的麦田，带着泥土和青草的气味。我站在城门口的石板路上，抬头看着城门上方斑驳的石刻——
+                - generic [ref=f182e81]: 「隆德尔」
+                - text: 两个字已经被风雨侵蚀得有些模糊了。
+              - paragraph [ref=f182e82]: "\"主人～我们到了呢！\""
+              - paragraph [ref=f182e83]: 菲尔从我身后探出脑袋，栗色的马尾随着她的动作轻轻晃动。她的眼睛亮晶晶的，像是第一次出门远足的孩子。分明一路上走了好几天，她居然还能这么精神——不愧是年轻人。
+              - paragraph [ref=f182e84]: 啊，不过她好像比我还小一岁来着。
+            - generic [ref=f182e85]:
+              - generic [ref=f182e86]:
+                - generic [ref=f182e87]: 菲
+                - generic [ref=f182e88]:
+                  - generic [ref=f182e89]: 菲尔
+                  - generic [ref=f182e90]: 奴隶 / 旅伴
+              - generic [ref=f182e91]: 栗色马尾，眼睛总是亮晶晶的，像只永远精力充沛的小狗。虽然脖子上戴着奴隶项圈，但她的笑容里没有一丝阴霾。比她年长一岁的主人总是拿她没办法。
+            - generic [ref=f182e93]:
+              - paragraph [ref=f182e94]:
+                - generic [ref=f182e95]: 「嗯，到了。」
+                - text: 我把手搭在剑柄上，扫了一眼城门周围。城门口的卫兵正百无聊赖地靠在墙上打哈欠，角落里蹲着几个衣衫褴褛的乞丐，石墙上贴着几张泛黄的委托单——
+                - generic [ref=f182e96]: 「讨伐狂暴史莱姆」
+                - generic [ref=f182e97]: 「采集月光草」
+                - generic [ref=f182e98]: 「墓园调查委托」
+                - text: ，报酬都不算高，正好适合新手。
+              - paragraph [ref=f182e99]: 冒险者工会就在城门进去不远的地方。来的路上听商队的人说，隆德尔最近不太平——魔物异常活跃，下水道里冒出了从没见过的怪物。工会正缺人手。正适合我这种刚起步的冒险者。
+              - paragraph [ref=f182e100]: "\"让开。\""
+              - paragraph [ref=f182e101]: 一个冷冰冰的声音从背后传来。我下意识侧身，一辆装饰华丽的马车从我身边缓缓驶过。车厢的窗帘被一只纤细的手撩开——
+              - paragraph [ref=f182e102]: 一张精致的脸从车窗中探出来。金色的卷发，蓝宝石色的眼睛，五官像是名家手绘的肖像画。但那双眼睛里没有任何温度，只有居高临下的审视。
+              - paragraph [ref=f182e103]: 她扫了我一眼。那种眼神——就像在看路边的野草。
+              - paragraph [ref=f182e104]:
+                - generic [ref=f182e105]: 「又来了一群闻着铜臭味就扑过来的苍蝇。」
+              - paragraph [ref=f182e106]: 声音不大不小，刚好够让我和菲尔听清楚。然后窗帘落下，马车继续驶进了城门。
+            - generic [ref=f182e107]:
+              - generic [ref=f182e108]:
+                - generic [ref=f182e109]: 艾
+                - generic [ref=f182e110]:
+                  - generic [ref=f182e111]: 艾莉西亚
+                  - generic [ref=f182e112]: 贵族少女 / 罗森堡家大小姐
+              - generic [ref=f182e113]: 金色卷发如瀑布般垂落，蓝宝石色的眼眸中有远超年龄的锐利。精致的五官仿佛名家手绘的肖像——但那双眼睛里藏着的，似乎不只是傲慢那么简单。
+            - generic [ref=f182e115]:
+              - paragraph [ref=f182e116]: 菲尔扯了扯我的袖子，小声说："主人……那个人好凶。"
+              - paragraph [ref=f182e117]: "\"嗯。不过她说的也不是全错。\"我笑了一下，\"我确实是为了赚钱来的。\""
+              - paragraph [ref=f182e118]: 不过——那个贵族小姐，她的眼神里好像藏着什么东西。不是单纯的傲慢。说不上来，但我的直觉告诉我，那不只是轻蔑。
+              - paragraph [ref=f182e119]: 算了，先不管这些。当务之急是去冒险者工会登记。
+              - paragraph [ref=f182e120]: "\"走吧，菲尔。先去工会报到。\""
+              - paragraph [ref=f182e121]:
+                - generic [ref=f182e122]: 「是～主人！」
+              - paragraph [ref=f182e123]: 我迈开步子，走进了隆德尔的城门。从今天开始，这座边境城镇就是我的新战场了。
+            - generic [ref=f182e124]:
+              - generic [ref=f182e125]: 站在隆德尔的城门内，晨光洒在石板路上。接下来你打算先去哪里？
+              - generic [ref=f182e126]:
+                - button "1 直奔冒险者工会——先登记成为正式冒险者，顺便看看告示墙上的委托" [ref=f182e127] [cursor=pointer]:
+                  - generic [ref=f182e128]: "1"
+                  - generic [ref=f182e129]: 直奔冒险者工会——先登记成为正式冒险者，顺便看看告示墙上的委托
+                - button "2 在城门附近的商业街转转，熟悉一下这座边境城镇的店铺和设施" [ref=f182e130] [cursor=pointer]:
+                  - generic [ref=f182e131]: "2"
+                  - generic [ref=f182e132]: 在城门附近的商业街转转，熟悉一下这座边境城镇的店铺和设施
+                - button "3 追上那辆马车——那个金发少女的态度让人在意，她到底是什么来头" [ref=f182e133] [cursor=pointer]:
+                  - generic [ref=f182e134]: "3"
+                  - generic [ref=f182e135]: 追上那辆马车——那个金发少女的态度让人在意，她到底是什么来头
+                - button "4 先找家旅店安顿下来，让赶了好几天路的菲尔好好休息一下" [ref=f182e136] [cursor=pointer]:
+                  - generic [ref=f182e137]: "4"
+                  - generic [ref=f182e138]: 先找家旅店安顿下来，让赶了好几天路的菲尔好好休息一下
+            - generic [ref=f182e139]:
+              - generic [ref=f182e140]:
+                - generic [ref=f182e141]:
+                  - button "任务" [ref=f182e142] [cursor=pointer]
+                  - button "角色" [ref=f182e143] [cursor=pointer]
+                  - button "物品" [ref=f182e144] [cursor=pointer]
+                  - button "统计" [ref=f182e145] [cursor=pointer]
+                - button "" [ref=f182e146] [cursor=pointer]:
+                  - generic [ref=f182e147]: 
+              - generic [ref=f182e150]:
+                - generic [ref=f182e151]:
+                  - generic [ref=f182e152]: 📍 当前状态
+                  - generic [ref=f182e153]:
+                    - generic [ref=f182e154]:
+                      - generic [ref=f182e155]: 章节
+                      - generic [ref=f182e156]: 第一章 · 边境之风
+                    - generic [ref=f182e157]:
+                      - generic [ref=f182e158]: 地点
+                      - generic [ref=f182e159]: 隆德尔城门外
+                    - generic [ref=f182e160]:
+                      - generic [ref=f182e161]: 时间
+                      - generic [ref=f182e162]: 春日的清晨，微风和煦
+                - generic [ref=f182e163]:
+                  - generic [ref=f182e164]: 📋 主线目标
+                  - generic [ref=f182e165]:
+                    - generic [ref=f182e166]: 进城登记
+                    - generic [ref=f182e167]: 前往冒险者工会完成冒险者登记
+                - generic [ref=f182e168]:
+                  - generic [ref=f182e169]: 📌 支线任务
+                  - generic [ref=f182e170]:
+                    - button "✅ 可用 1" [ref=f182e171] [cursor=pointer]
+                    - button "🔒 不可用 26" [ref=f182e172] [cursor=pointer]
+                  - generic [ref=f182e174]:
+                    - generic [ref=f182e175]:
+                      - generic [ref=f182e176]: 菲尔
+                      - generic [ref=f182e177]: 支线I
+                    - generic [ref=f182e178]: 旅店日记
+                    - generic [ref=f182e179]:
+                      - generic [ref=f182e180]:
+                        - generic [ref=f182e181]: ✓
+                        - text: 已认识菲尔
+                      - generic [ref=f182e182]:
+                        - generic [ref=f182e183]: ✓
+                        - text: 好感度 ≥ 30
+                    - generic [ref=f182e184]: ✅ 可触发
+          - generic [ref=f182e186] [cursor=pointer]:
+            - generic [ref=f182e187]:
+              - generic [ref=f182e188]: 
+              - generic [ref=f182e189]: 仪表盘
+            - generic: 
+        - generic:
+          - button "" [ref=f182e191] [cursor=pointer]
+          - generic [ref=f182e192]: 1/1
+      - generic [ref=f182e196]:
+        - button "" [ref=f182e197] [cursor=pointer]:
+          - generic [ref=f182e198]: 
+        - button "" [ref=f182e199] [cursor=pointer]:
+          - generic [ref=f182e200]: 
+        - button "" [ref=f182e201] [cursor=pointer]:
+          - generic [ref=f182e202]: 
+        - button "" [ref=f182e203] [cursor=pointer]:
+          - generic [ref=f182e204]: 
+        - button "" [ref=f182e205] [cursor=pointer]:
+          - generic [ref=f182e206]: 
+    - generic [ref=f182e36]:
+      - button "格式补全" [ref=f182e209] [cursor=pointer]
+      - text:  
+      - generic [ref=f182e37]:
+        - generic [ref=f182e38]:
+          - generic [ref=f182e39] [cursor=pointer]: 
+          - generic "扩展程序" [ref=f182e210] [cursor=pointer]: 
+        - textbox "输入想发送的消息，或输入 /? 获取帮助" [active] [ref=f182e211]
+        - generic [ref=f182e41]:
+          - text:      
+          - generic "发送消息" [ref=f182e212] [cursor=pointer]: 
+  - text:                       1       
+  - generic [ref=f182e213]: 
+  - status [ref=f182e214]
+  - status [ref=f182e215]
+  - status [ref=f182e216]
+  - status [ref=f182e217]
+  - status [ref=f182e218]
+  - status [ref=f182e219]
+  - status [ref=f182e220]
+  - status [ref=f182e221]
+  - status [ref=f182e222]
+  - status [ref=f182e223]
+  - status [ref=f182e224]
+  - status [ref=f182e225]
+  - text:     
