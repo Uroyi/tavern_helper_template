@@ -1,0 +1,47 @@
+@@preprocessing
+<%_
+if (typeof punishChest === 'undefined') var punishChest = getvar('stat_data.当前惩罚事件.胸部', { defaults: false });
+if (typeof punishVagina === 'undefined') var punishVagina = getvar('stat_data.当前惩罚事件.私处', { defaults: false });
+if (typeof punishPalm === 'undefined') var punishPalm = getvar('stat_data.当前惩罚事件.手心', { defaults: false });
+if (typeof punishSole === 'undefined') var punishSole = getvar('stat_data.当前惩罚事件.脚心', { defaults: false });
+if (typeof punishBack === 'undefined') var punishBack = getvar('stat_data.当前惩罚事件.背部', { defaults: false });
+if (typeof punishCalf === 'undefined') var punishCalf = getvar('stat_data.当前惩罚事件.小腿', { defaults: false });
+if (typeof punishHip === 'undefined') var punishHip = getvar('stat_data.当前惩罚事件.臀部', { defaults: false });
+if (typeof punishInnerThigh === 'undefined') var punishInnerThigh = getvar('stat_data.当前惩罚事件.大腿内侧', { defaults: false });
+_%>
+
+<%_ if (punishChest || punishVagina || punishPalm || punishSole || punishBack || punishCalf || punishHip || punishInnerThigh) { _%>
+激活叙事协议
+<%_ } _%>
+
+<%_ if (punishChest) { _%>
+激活胸部损伤光谱
+<%_ } _%>
+
+<%_ if (punishVagina) { _%>
+激活私处损伤光谱
+<%_ } _%>
+
+<%_ if (punishPalm) { _%>
+激活手心损伤光谱
+<%_ } _%>
+
+<%_ if (punishSole) { _%>
+激活脚心损伤光谱
+<%_ } _%>
+
+<%_ if (punishBack) { _%>
+激活背部损伤光谱
+<%_ } _%>
+
+<%_ if (punishCalf) { _%>
+激活小腿损伤光谱
+<%_ } _%>
+
+<%_ if (punishHip) { _%>
+激活臀部损伤光谱
+<%_ } _%>
+
+<%_ if (punishInnerThigh) { _%>
+激活大腿内侧损伤光谱
+<%_ } _%>

@@ -24,8 +24,8 @@ defineEmits<{
 <style lang="scss" scoped>
 .tab-nav {
   display: flex;
-  border-bottom: 1px solid #3d3d5c;
-  background: #16213e;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
 }
 
 .tab-btn {
@@ -33,20 +33,20 @@ defineEmits<{
   padding: 8px 12px;
   background: none;
   border: none;
-  color: #8888aa;
+  color: var(--text-secondary);
   cursor: pointer;
   font-size: 13px;
   transition: all 0.2s;
   border-bottom: 2px solid transparent;
 
   &:hover {
-    color: #c0c0e0;
-    background: rgba(255,255,255,0.05);
+    color: var(--text-primary);
+    background: var(--hover-bg);
   }
 
   &.active {
-    color: #ffcc80;
-    border-bottom-color: #ffcc80;
+    color: var(--accent-gold);
+    border-bottom-color: var(--accent-gold);
   }
 }
 </style>

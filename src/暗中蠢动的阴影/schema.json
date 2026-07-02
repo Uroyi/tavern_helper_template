@@ -100,6 +100,14 @@
             "制裁"
           ]
         },
+        "当前主线任务": {
+          "default": "",
+          "type": "string"
+        },
+        "主线任务详情": {
+          "default": "",
+          "type": "string"
+        },
         "第一章_任务完成数": {
           "type": "number"
         },
@@ -174,6 +182,16 @@
               },
               "数量": {
                 "type": "number"
+              },
+              "分类": {
+                "default": "重要物品",
+                "type": "string",
+                "enum": [
+                  "武器",
+                  "消耗品",
+                  "重要物品",
+                  "SP工具"
+                ]
               }
             },
             "required": [
@@ -208,6 +226,9 @@
             },
             "拉拉": {
               "type": "number"
+            },
+            "玛丽亚": {
+              "type": "number"
             }
           },
           "required": [
@@ -218,7 +239,8 @@
             "艾琳",
             "米莉",
             "露露",
-            "拉拉"
+            "拉拉",
+            "玛丽亚"
           ]
         },
         "成就": {
@@ -244,6 +266,20 @@
       "properties": {
         "好感度": {
           "type": "number"
+        },
+        "臀部状态": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "红肿度": {
+              "default": 0,
+              "type": "number"
+            },
+            "最近更新时间": {
+              "default": 1782968749570,
+              "type": "number"
+            }
+          }
         },
         "支线完成": {
           "type": "object",
@@ -295,6 +331,20 @@
       "properties": {
         "好感度": {
           "type": "number"
+        },
+        "臀部状态": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "红肿度": {
+              "default": 0,
+              "type": "number"
+            },
+            "最近更新时间": {
+              "default": 1782968749570,
+              "type": "number"
+            }
+          }
         },
         "支线完成": {
           "type": "object",
@@ -359,6 +409,20 @@
         "好感度": {
           "type": "number"
         },
+        "臀部状态": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "红肿度": {
+              "default": 0,
+              "type": "number"
+            },
+            "最近更新时间": {
+              "default": 1782968749570,
+              "type": "number"
+            }
+          }
+        },
         "支线完成": {
           "type": "object",
           "properties": {
@@ -418,6 +482,20 @@
         "好感度": {
           "type": "number"
         },
+        "臀部状态": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "红肿度": {
+              "default": 0,
+              "type": "number"
+            },
+            "最近更新时间": {
+              "default": 1782968749570,
+              "type": "number"
+            }
+          }
+        },
         "支线完成": {
           "type": "object",
           "properties": {
@@ -473,6 +551,20 @@
         "好感度": {
           "type": "number"
         },
+        "臀部状态": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "红肿度": {
+              "default": 0,
+              "type": "number"
+            },
+            "最近更新时间": {
+              "default": 1782968749570,
+              "type": "number"
+            }
+          }
+        },
         "支线完成": {
           "type": "object",
           "properties": {
@@ -523,6 +615,20 @@
       "properties": {
         "好感度": {
           "type": "number"
+        },
+        "臀部状态": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "红肿度": {
+              "default": 0,
+              "type": "number"
+            },
+            "最近更新时间": {
+              "default": 1782968749570,
+              "type": "number"
+            }
+          }
         },
         "支线完成": {
           "type": "object",
@@ -580,6 +686,20 @@
         "好感度": {
           "type": "number"
         },
+        "臀部状态": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "红肿度": {
+              "default": 0,
+              "type": "number"
+            },
+            "最近更新时间": {
+              "default": 1782968749570,
+              "type": "number"
+            }
+          }
+        },
         "支线完成": {
           "type": "object",
           "properties": {
@@ -634,6 +754,20 @@
       "properties": {
         "好感度": {
           "type": "number"
+        },
+        "臀部状态": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "红肿度": {
+              "default": 0,
+              "type": "number"
+            },
+            "最近更新时间": {
+              "default": 1782968749571,
+              "type": "number"
+            }
+          }
         },
         "支线完成": {
           "type": "object",

@@ -22,6 +22,8 @@ export const Schema = z.object({
   主线: z.object({
     章节: z.coerce.number().transform(v => _.clamp(v, 0, 4)),
     路线: z.enum(['未选择', '救赎', '制裁']),
+    当前主线任务: z.string().prefault(''),
+    主线任务详情: z.string().prefault(''),
     第一章_任务完成数: z.coerce.number().transform(v => _.clamp(v, 0, 3)),
     第二章_下水道调查完成: z.boolean(),
     第三章_真相揭露: z.boolean(),
@@ -40,6 +42,7 @@ export const Schema = z.object({
     物品栏: z.record(z.string(), z.object({
       描述: z.string(),
       数量: z.coerce.number(),
+      分类: z.enum(['武器', '消耗品', '重要物品', 'SP工具']).prefault('重要物品'),
     })).transform(data => _.pickBy({ ...data }, ({ 数量 }) => 数量 > 0)),
     打屁股统计: z.object({
       总次数: z.coerce.number(),
@@ -50,12 +53,17 @@ export const Schema = z.object({
       米莉: z.coerce.number(),
       露露: z.coerce.number(),
       拉拉: z.coerce.number(),
+      玛丽亚: z.coerce.number(),
     }),
     成就: z.record(z.string(), z.boolean()).transform(obj => ({ ...obj })),
   }),
 
   菲尔: z.object({
     好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+    臀部状态: z.object({
+      红肿度: z.coerce.number().transform(v => _.clamp(v, 0, 1000)).prefault(0),
+      最近更新时间: z.coerce.number().prefault(() => Date.now()),
+    }).prefault({}),
     支线完成: z.object({ SQ1: z.boolean(), SQ2: z.boolean(), SQ3: z.boolean() }),
     专属flag: z.object({
       日记被发现: z.boolean(),
@@ -66,6 +74,10 @@ export const Schema = z.object({
 
   艾莉西亚: z.object({
     好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+    臀部状态: z.object({
+      红肿度: z.coerce.number().transform(v => _.clamp(v, 0, 1000)).prefault(0),
+      最近更新时间: z.coerce.number().prefault(() => Date.now()),
+    }).prefault({}),
     支线完成: z.object({ SQ1: z.boolean(), SQ2: z.boolean(), SQ3: z.boolean(), SQ4: z.boolean() }),
     专属flag: z.object({
       夜间来访发现: z.boolean(),
@@ -78,6 +90,10 @@ export const Schema = z.object({
 
   赛拉: z.object({
     好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+    臀部状态: z.object({
+      红肿度: z.coerce.number().transform(v => _.clamp(v, 0, 1000)).prefault(0),
+      最近更新时间: z.coerce.number().prefault(() => Date.now()),
+    }).prefault({}),
     支线完成: z.object({ SQ1: z.boolean(), SQ2: z.boolean(), SQ3: z.boolean(), SQ4: z.boolean() }),
     专属flag: z.object({
       下水道初次交手: z.boolean(),
@@ -89,6 +105,10 @@ export const Schema = z.object({
 
   米莉: z.object({
     好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+    臀部状态: z.object({
+      红肿度: z.coerce.number().transform(v => _.clamp(v, 0, 1000)).prefault(0),
+      最近更新时间: z.coerce.number().prefault(() => Date.now()),
+    }).prefault({}),
     支线完成: z.object({ SQ1: z.boolean(), SQ2: z.boolean(), SQ3: z.boolean() }),
     专属flag: z.object({
       三重任务完成: z.boolean(),
@@ -100,6 +120,10 @@ export const Schema = z.object({
 
   艾琳: z.object({
     好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+    臀部状态: z.object({
+      红肿度: z.coerce.number().transform(v => _.clamp(v, 0, 1000)).prefault(0),
+      最近更新时间: z.coerce.number().prefault(() => Date.now()),
+    }).prefault({}),
     支线完成: z.object({ SQ1: z.boolean(), SQ2: z.boolean(), SQ3: z.boolean() }),
     专属flag: z.object({
       看店任务完成: z.boolean(),
@@ -110,6 +134,10 @@ export const Schema = z.object({
 
   露露拉拉: z.object({
     好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+    臀部状态: z.object({
+      红肿度: z.coerce.number().transform(v => _.clamp(v, 0, 1000)).prefault(0),
+      最近更新时间: z.coerce.number().prefault(() => Date.now()),
+    }).prefault({}),
     支线完成: z.object({ SQ1: z.boolean(), SQ2: z.boolean(), SQ3: z.boolean() }),
     选择分支: z.enum(['未选择', '帮助露露', '帮助拉拉']),
     专属flag: z.object({
@@ -120,6 +148,10 @@ export const Schema = z.object({
 
   哈尼: z.object({
     好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+    臀部状态: z.object({
+      红肿度: z.coerce.number().transform(v => _.clamp(v, 0, 1000)).prefault(0),
+      最近更新时间: z.coerce.number().prefault(() => Date.now()),
+    }).prefault({}),
     支线完成: z.object({ SQ1: z.boolean(), SQ2: z.boolean(), SQ3: z.boolean(), SQ4: z.boolean() }),
     专属flag: z.object({
       问卷完成: z.boolean(),
@@ -130,6 +162,10 @@ export const Schema = z.object({
 
   玛丽亚: z.object({
     好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)),
+    臀部状态: z.object({
+      红肿度: z.coerce.number().transform(v => _.clamp(v, 0, 1000)).prefault(0),
+      最近更新时间: z.coerce.number().prefault(() => Date.now()),
+    }).prefault({}),
     支线完成: z.object({ SQ1: z.boolean(), SQ2: z.boolean(), SQ3: z.boolean() }),
     专属flag: z.object({
       废弃教会秘密: z.boolean(),

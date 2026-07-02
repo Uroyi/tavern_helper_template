@@ -1,5 +1,6 @@
 <template>
   <div class="stats-panel">
+    <!-- Attributes -->
     <div class="section">
       <div class="section-title">⚔️ 属性</div>
       <div class="stats-grid">
@@ -10,9 +11,10 @@
       </div>
     </div>
 
+    <!-- Spank Statistics -->
     <div class="section">
       <div class="section-title">👋 打屁股统计</div>
-      <div class="total-spanks">总计: {{ store.data.主角.打屁股统计.总次数 }}次</div>
+      <div class="total-spanks">总计: {{ store.data.主角.打屁股统计.总次数 }} 次</div>
       <div class="spank-list">
         <div v-for="s in spankStats" :key="s.name" class="spank-row">
           <span class="spank-name">{{ s.name }}</span>
@@ -21,11 +23,12 @@
       </div>
     </div>
 
+    <!-- Achievements -->
     <div class="section" v-if="achievementEntries.length > 0">
       <div class="section-title">🏆 成就</div>
       <div v-for="[name, done] in achievementEntries" :key="name" class="ach-row">
         <span :class="done ? 'ach-done' : 'ach-pending'">{{ done ? '✓' : '○' }}</span>
-        <span>{{ name }}</span>
+        <span :class="done ? 'ach-text-done' : 'ach-text-pending'">{{ name }}</span>
       </div>
     </div>
   </div>
@@ -44,39 +47,113 @@ const stats = computed(() => [
   { label: '生命值', value: store.data.主角.属性.生命值 },
 ]);
 
+const ALL_SPANK_CHARS = ['菲尔', '艾莉西亚', '赛拉', '米莉', '艾琳', '露露', '拉拉', '玛丽亚'];
+
 const spankStats = computed(() => {
-  const s = store.data.主角.打屁股统计;
-  return [
-    { name: '菲尔', count: s.菲尔 },
-    { name: '艾莉西亚', count: s.艾莉西亚 },
-    { name: '赛拉', count: s.赛拉 },
-    { name: '艾琳', count: s.艾琳 },
-    { name: '米莉', count: s.米莉 },
-    { name: '露露', count: s.露露 },
-    { name: '拉拉', count: s.拉拉 },
-  ].filter(x => x.count > 0);
+  const s = store.data.主角.打屁股统计 as Record<string, number>;
+  return ALL_SPANK_CHARS.map((name) => ({
+    name,
+    count: s[name] || 0,
+  }));
 });
 
 const achievementEntries = computed(() => Object.entries(store.data.主角.成就).filter(([, v]) => v));
 </script>
 
 <style lang="scss" scoped>
-.stats-panel { display: flex; flex-direction: column; gap: 10px; }
+.stats-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .section {
-  background: rgba(255,255,255,0.03); border-radius: 6px; padding: 10px;
-  .section-title {
-    font-weight: bold; color: #ffcc80; font-size: 12px;
-    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
-  }
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 10px 12px;
 }
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
-.stat { display: flex; justify-content: space-between; font-size: 12px;
-  .stat-label { color: #8888aa; } .stat-value { color: #ffcc80; font-weight: bold; }
+
+.section-title {
+  font-weight: bold;
+  color: var(--accent-gold);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
 }
-.total-spanks { font-size: 14px; color: #ef5350; font-weight: bold; margin-bottom: 4px; }
-.spank-row { display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;
-  .spank-name { color: #c0c0e0; } .spank-count { color: #ff8a80; }
+
+// Attributes
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 16px;
 }
-.ach-row { font-size: 11px; padding: 1px 0; color: #81c784; }
-.ach-pending { color: #555577; }
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 2px 0;
+
+  .stat-label { color: var(--text-secondary); }
+  .stat-value { color: var(--accent-gold); font-weight: bold; }
+}
+
+// Spank Stats
+.total-spanks {
+  font-size: 14px;
+  color: var(--accent-red);
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.spank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spank-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  padding: 2px 0;
+}
+
+.spank-name {
+  color: var(--text-primary);
+}
+
+.spank-count {
+  color: var(--accent-pink);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+// Achievements
+.ach-row {
+  font-size: 11px;
+  padding: 2px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ach-done {
+  color: var(--accent-green);
+  font-weight: bold;
+}
+
+.ach-pending {
+  color: var(--text-muted);
+}
+
+.ach-text-done {
+  color: var(--accent-green);
+}
+
+.ach-text-pending {
+  color: var(--text-muted);
+}
 </style>

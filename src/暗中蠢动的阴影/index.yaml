@@ -121,7 +121,7 @@
 
       - 名称: 角色阶段
         <<: *蓝灯0层
-        文件: 世界书/角色/角色阶段
+        文件: 世界书/角色/角色阶段.txt
 
       - 名称: 菲尔
         启用: true
@@ -638,7 +638,7 @@
         ```
         <body>
         <script>
-        $('body').load('https://cdn.jsdelivr.net/gh/Uroyi/tavern_helper_template/dist/暗中蠢动的阴影/界面/状态栏/index.html')
+        $('body').load('http://localhost:5500/dist/暗中蠢动的阴影/界面/状态栏/index.html')
         </script>
         </body>
         ```
@@ -676,18 +676,18 @@
         启用: true
         类型: 脚本
         内容: |-
-          import 'https://cdn.jsdelivr.net/gh/Uroyi/tavern_helper_template/dist/暗中蠢动的阴影/脚本/变量结构/index.js';
+          import 'http://localhost:5500/dist/暗中蠢动的阴影/脚本/变量结构/index.js';
 
       - 名称: 立即事件
         id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
         启用: true
         类型: 脚本
         内容: |-
-          import 'https://cdn.jsdelivr.net/gh/Uroyi/tavern_helper_template/dist/暗中蠢动的阴影/脚本/立即事件/index.js';
+          import 'http://localhost:5500/dist/暗中蠢动的阴影/脚本/立即事件/index.js';
 
       - 名称: 流式前端
         id: c1d2e3f4-a5b6-7890-cdef-1234567890ab
         启用: true
         类型: 脚本
         内容: |-
-          import 'https://cdn.jsdelivr.net/gh/Uroyi/tavern_helper_template/dist/暗中蠢动的阴影/脚本/流式前端/index.js';
+          import 'http://localhost:5500/dist/暗中蠢动的阴影/脚本/流式前端/index.js';

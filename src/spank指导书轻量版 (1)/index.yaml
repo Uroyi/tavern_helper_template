@@ -1,0 +1,481 @@
+# yaml-language-server: $schema=https://testingcf.jsdelivr.net/gh/StageDog/tavern_sync/dist/schema/worldbook.zh.json
+锚点: {}
+
+条目:
+  - 名称: 工具威力[mvu_update][mvu_plot]
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+      useGroupScoring: false
+    文件: spbook\工具威力[mvu_update][mvu_plot]
+
+  - 名称: 打屁股开始
+    启用: true
+    激活策略:
+      类型: 蓝灯
+      关键字:
+        - 调教
+        - 责
+        - 晾
+        - 热
+        - 打
+        - 罚
+        - 教训
+        - 验刑
+        - 撅
+        - 掴
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 71
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    内容: <打屁股>
+
+  - 名称: 打屁股结束
+    启用: true
+    激活策略:
+      类型: 蓝灯
+      关键字:
+        - 调教
+        - 责
+        - 晾
+        - 热
+        - 打
+        - 罚
+        - 教训
+        - 验刑
+        - 撅
+        - 掴
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 1
+      顺序: 74
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    内容: </打屁股>
+
+  - 名称: 打屁股工具及力度[mvu_plot] [mvu_update]
+    启用: true
+    激活策略:
+      类型: 蓝灯
+      关键字:
+        - 调教
+        - 责
+        - 晾
+        - 热
+        - 打
+        - 罚
+        - 教训
+        - 验刑
+        - 撅
+        - 掴
+    插入位置:
+      类型: 角色定义之前
+      顺序: 75
+    激活概率: 100
+    递归:
+      不可被其他条目激活: true
+      不可激活其他条目: true
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    文件: spbook\打屁股工具及力度[mvu_plot]_[mvu_update]
+
+  - 名称: 协议_叙事与描写
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 激活叙事协议
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    文件: spbook\协议_叙事与描写
+
+  - 名称: 光谱_胸部
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 激活胸部损伤光谱
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    文件: spbook\光谱_胸部
+
+  - 名称: "[EJS]惩罚光谱动态加载器"
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 73
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    额外字段:
+      addMemo: true
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    文件: spbook\[EJS]惩罚光谱动态加载器
+
+  - 名称: 光谱_臀部
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 激活臀部损伤光谱
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    文件: spbook\光谱_臀部
+
+  - 名称: 光谱_小腿
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 激活小腿损伤光谱
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    文件: spbook\光谱_小腿
+
+  - 名称: 光谱_背部
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 激活背部损伤光谱
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    文件: spbook\光谱_背部
+
+  - 名称: 光谱_脚心
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 激活脚心损伤光谱
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: true
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    文件: spbook\光谱_脚心
+
+  - 名称: 光谱_手心
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 激活手心损伤光谱
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    文件: spbook\光谱_手心
+
+  - 名称: 光谱_阴部
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 激活私处损伤光谱
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: true
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    文件: spbook\光谱_阴部
+
+  - 名称: 光谱_大腿内侧
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 激活大腿内侧损伤光谱
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: true
+    额外字段:
+      addMemo: true
+      characterFilter:
+        isExclude: false
+        names: []
+        tags: []
+      groupOverride: false
+      groupWeight: 100
+      ignoreBudget: false
+      matchCharacterDepthPrompt: false
+      matchCharacterDescription: false
+      matchCharacterPersonality: false
+      matchCreatorNotes: false
+      matchPersonaDescription: false
+      matchScenario: false
+      triggers: []
+    文件: spbook\光谱_大腿内侧
