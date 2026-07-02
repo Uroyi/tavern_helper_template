@@ -187,9 +187,9 @@ const sideQuestList = computed<SideQuestDisplay[]>(() => {
     conditions: [
       { text: '已完成 SQ1', met: d.菲尔.支线完成.SQ1 },
       { text: '主线章节 ≥ 2', met: d.主线.章节 >= 2 },
-      { text: '好感度 ≥ 60', met: d.菲尔.好感度 >= 60 },
+      { text: '好感度 ≥ 50', met: d.菲尔.好感度 >= 50 },
     ],
-    allMet: d.菲尔.支线完成.SQ1 && d.主线.章节 >= 2 && d.菲尔.好感度 >= 60,
+    allMet: d.菲尔.支线完成.SQ1 && d.主线.章节 >= 2 && d.菲尔.好感度 >= 50,
     completed: d.菲尔.支线完成.SQ2,
     charMet: met('菲尔'),
   });
@@ -212,9 +212,10 @@ const sideQuestList = computed<SideQuestDisplay[]>(() => {
     color: CHAR_COLORS['艾莉西亚'],
     conditions: [
       { text: '已认识艾莉西亚', met: met('艾莉西亚') },
-      { text: '好感度 ≥ 20', met: d.艾莉西亚.好感度 >= 20 },
+      { text: '城门见过艾莉西亚', met: d.主线.关键flag.见过艾莉西亚城门出场 },
+      { text: '地点为罗森堡旧宅', met: d.世界.当前地点 === '罗森堡旧宅' },
     ],
-    allMet: met('艾莉西亚') && d.艾莉西亚.好感度 >= 20,
+    allMet: met('艾莉西亚') && d.主线.关键flag.见过艾莉西亚城门出场 && d.世界.当前地点 === '罗森堡旧宅',
     completed: d.艾莉西亚.支线完成.SQ1,
     charMet: met('艾莉西亚'),
   });

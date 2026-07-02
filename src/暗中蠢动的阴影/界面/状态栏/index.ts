@@ -1,15 +1,25 @@
 import { waitUntil } from 'async-wait-until';
 import App from './App.vue';
 import './global.css';
+import { DECAY_RATE_PER_HOUR, CHAR_KEYS } from './constants';
 
 $(async () => {
-  await waitGlobalInitialized('Mvu');
-  await waitUntil(() => _.has(getVariables({ type: 'message' }), 'stat_data'));
+  try {
+    await Promise.race([
+      waitGlobalInitialized('Mvu'),
+      new Promise<never>((_, reject) => setTimeout(() => reject(new Error('MVU initialization timeout')), 10000)),
+    ]);
+    await Promise.race([
+      waitUntil(() => _.has(getVariables({ type: 'message' }), 'stat_data'), { timeout: 15000 }),
+      new Promise<never>((_, reject) => setTimeout(() => reject(new Error('stat_data not found')), 15000)),
+    ]);
+  } catch (err) {
+    console.error('[StatusBar] Initialization failed:', err);
+    $('#app').text('状态栏加载失败: ' + (err instanceof Error ? err.message : String(err)));
+    return;
+  }
 
   // ---- Spank status decay on variable updates ----
-  const CHAR_KEYS = ['菲尔', '艾莉西亚', '赛拉', '米莉', '艾琳', '露露拉拉', '哈尼', '玛丽亚'];
-  const DECAY_RATE_PER_HOUR = 50;
-
   eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, (newVariables: any) => {
     const now = Date.now();
     CHAR_KEYS.forEach((name) => {
@@ -31,5 +41,10 @@ $(async () => {
     });
   });
 
-  createApp(App).use(createPinia()).mount('#app');
+  try {
+    createApp(App).use(createPinia()).mount('#app');
+  } catch (err) {
+    console.error('[StatusBar] Vue mount failed:', err);
+    $('#app').text('状态栏渲染失败');
+  }
 });

@@ -636,11 +636,15 @@
       查找表达式: <StatusPlaceHolderImpl/>
       内容: |-
         ```
-        <body>
+        <div id="shadow-status-bar"></div>
         <script>
-        $('body').load('http://localhost:5500/dist/暗中蠢动的阴影/界面/状态栏/index.html')
+        (function() {
+          var $container = $('#shadow-status-bar');
+          if ($container.children().length === 0) {
+            $container.load('http://localhost:5500/dist/暗中蠢动的阴影/界面/状态栏/index.html');
+          }
+        })();
         </script>
-        </body>
         ```
       来源:
         用户输入: false

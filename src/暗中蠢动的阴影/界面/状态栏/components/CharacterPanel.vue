@@ -59,11 +59,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useDataStore } from '../store';
+import { DECAY_RATE_PER_HOUR } from '../constants';
 
 const store = useDataStore();
 const presence = computed(() => store.data.世界.角色出场状态);
-
-const DECAY_RATE_PER_HOUR = 5;
 
 function getEffectiveRedness(charKey: string): number {
   const c = (store.data as any)[charKey];

@@ -45,6 +45,9 @@ export function mountStreamingMessages(
   const { host = 'iframe', filter, prefix = uuidv4() } = options;
 
   const states: Map<number, { app: App; data: Reactive<StreamingMessageContext>; destroy: () => void }> = new Map();
+  const renderLocks: Map<number, Promise<void>> = new Map();
+  let renderAllInProgress = false;
+  const renderAllQueue: Array<() => void> = [];
   let has_stoped = false;
 
   const destroyIfInvalid = (message_id: number): boolean => {
@@ -64,125 +67,169 @@ export function mountStreamingMessages(
     if (has_stoped) {
       return;
     }
+    // Skip individual renders if a full re-render is in progress
+    if (renderAllInProgress) {
+      return;
+    }
     if (destroyIfInvalid(message_id)) {
       return;
     }
 
-    const message = stream_message ?? getChatMessages(message_id)[0].message ?? '';
-    if (filter && !filter(message_id, message)) {
-      states.get(message_id)?.destroy();
-      return;
+    // ── Per-message-id lock: serializes concurrent renders for the same message ──
+    while (renderLocks.has(message_id)) {
+      await renderLocks.get(message_id);
     }
+    let resolveLock: () => void;
+    const lockPromise = new Promise<void>(resolve => {
+      resolveLock = resolve;
+    });
+    renderLocks.set(message_id, lockPromise);
 
-    const $message_element = $(`.mes[mesid='${message_id}']`);
-
-    const $mes_text = $message_element.find('.mes_text').addClass('hidden!');
-    $message_element.find('.TH-streaming').addClass('hidden!');
-
-    let $host = $message_element.find(`#${prefix}-${message_id}`);
-    if ($host.length > 0) {
-      const state = states.get(message_id);
-      if (state) {
-        state.data.message = message;
-        state.data.during_streaming = Boolean(stream_message);
+    try {
+      const messages = getChatMessages(message_id);
+      const message = stream_message ?? (messages.length > 0 ? messages[0].message : '') ?? '';
+      if (filter && !filter(message_id, message)) {
+        states.get(message_id)?.destroy();
         return;
       }
-    }
 
-    states.get(message_id)?.destroy();
-    $host.remove();
+      const $message_element = $(`.mes[mesid='${message_id}']`);
 
-    let $mes_streaming = $message_element.find('.mes_streaming');
-    if ($mes_streaming.length === 0) {
-      $mes_streaming = $('<div class="mes_streaming">')
-        .css({
-          'font-weight': '500',
-          'line-height': 'calc(var(--mainFontSize) + .5rem)',
-          'max-width': '100%',
-          'overflow-wrap': 'anywhere',
-          padding: 'calc(var(--mainFontSize) * 0.8) 0 0 0',
-        })
-        .insertAfter($mes_text);
-    }
+      const $mes_text = $message_element.find('.mes_text').addClass('hidden!');
+      $message_element.find('.TH-streaming').addClass('hidden!');
 
-    $host = (host === 'iframe' ? createScriptIdIframe().addClass('w-full') : createScriptIdDiv())
-      .attr('id', `${prefix}-${message_id}`)
-      .appendTo($mes_streaming);
-
-    const data = reactive<StreamingMessageContext>({
-      prefix,
-      host_id: `${prefix}-${message_id}`,
-      message_id,
-      message,
-      during_streaming: Boolean(stream_message),
-    });
-    const app = creator().provide('streaming_message_context', data);
-    if (host === 'iframe') {
-      $host.on('load', function (this: HTMLIFrameElement) {
-        teleportStyle(this.contentDocument!.head);
-        app.mount(this.contentDocument!.body);
-      });
-    } else {
-      app.mount($host[0]);
-    }
-
-    const observer = new MutationObserver(() => {
-      const $edit_textarea = $('#chat').find('#curEditTextarea');
-      if ($edit_textarea.parent().is($mes_text)) {
-        $mes_text.removeClass('hidden!');
-        $host.addClass('hidden!');
-      } else if ($edit_textarea.length === 0) {
-        $mes_text.addClass('hidden!');
-        $message_element.find('.TH-streaming').addClass('hidden!');
-        $host.removeClass('hidden!');
+      let $host = $message_element.find(`#${prefix}-${message_id}`);
+      if ($host.length > 0) {
+        const state = states.get(message_id);
+        if (state) {
+          state.data.message = message;
+          state.data.during_streaming = Boolean(stream_message);
+          return;
+        }
       }
-    });
-    observer.observe($mes_text[0] as HTMLElement, { childList: true });
 
-    states.set(message_id, {
-      app,
-      data,
-      destroy: () => {
-        const $th_streaming = $message_element.find('.TH-streaming');
-        if ($th_streaming.length > 0) {
-          $th_streaming.removeClass('hidden!');
-        } else {
+      states.get(message_id)?.destroy();
+      $host.remove();
+
+      let $mes_streaming = $message_element.find('.mes_streaming');
+      if ($mes_streaming.length === 0) {
+        $mes_streaming = $('<div class="mes_streaming">')
+          .css({
+            'font-weight': '500',
+            'line-height': 'calc(var(--mainFontSize) + .5rem)',
+            'max-width': '100%',
+            'overflow-wrap': 'anywhere',
+            padding: 'calc(var(--mainFontSize) * 0.8) 0 0 0',
+          })
+          .insertAfter($mes_text);
+      }
+
+      $host = (host === 'iframe' ? createScriptIdIframe().addClass('w-full') : createScriptIdDiv())
+        .attr('id', `${prefix}-${message_id}`)
+        .appendTo($mes_streaming);
+
+      const data = reactive<StreamingMessageContext>({
+        prefix,
+        host_id: `${prefix}-${message_id}`,
+        message_id,
+        message,
+        during_streaming: Boolean(stream_message),
+      });
+      const app = creator().provide('streaming_message_context', data);
+
+      const observer = new MutationObserver(() => {
+        const $edit_textarea = $('#chat').find('#curEditTextarea');
+        if ($edit_textarea.parent().is($mes_text)) {
           $mes_text.removeClass('hidden!');
+          $host.addClass('hidden!');
+        } else if ($edit_textarea.length === 0) {
+          $mes_text.addClass('hidden!');
+          $message_element.find('.TH-streaming').addClass('hidden!');
+          $host.removeClass('hidden!');
         }
+      });
+      observer.observe($mes_text[0] as HTMLElement, { childList: true });
 
-        app.unmount();
-        $host.remove();
-        if ($mes_streaming.children().length === 0) {
-          $mes_streaming.remove();
+      try {
+        if (host === 'iframe') {
+          $host.on('load', function (this: HTMLIFrameElement) {
+            teleportStyle(this.contentDocument!.head);
+            app.mount(this.contentDocument!.body);
+          });
+        } else {
+          app.mount($host[0]);
         }
+      } catch (err) {
         observer.disconnect();
-        states.delete(message_id);
-      },
-    });
+        throw err;
+      }
+
+      states.set(message_id, {
+        app,
+        data,
+        destroy: () => {
+          const $th_streaming = $message_element.find('.TH-streaming');
+          if ($th_streaming.length > 0) {
+            $th_streaming.removeClass('hidden!');
+          } else {
+            $mes_text.removeClass('hidden!');
+          }
+
+          app.unmount();
+          $host.remove();
+          if ($mes_streaming.children().length === 0) {
+            $mes_streaming.remove();
+          }
+          observer.disconnect();
+          states.delete(message_id);
+        },
+      });
+    } finally {
+      renderLocks.delete(message_id);
+      resolveLock!();
+    }
   };
 
   const renderAllMessage = async (options: { destroy_all?: boolean; trigger_event?: boolean } = {}) => {
     if (has_stoped) {
       return;
     }
-    if (options.destroy_all) {
-      states.forEach(({ destroy }) => destroy());
-    } else {
-      destroyAllInvalid();
+    if (renderAllInProgress) {
+      // Queue a re-run after the current one completes
+      return new Promise<void>(resolve => {
+        renderAllQueue.push(async () => {
+          await renderAllMessage(options);
+          resolve();
+        });
+      });
     }
-    await Promise.all(
-      $('#chat')
-        .children(".mes[is_user='false'][is_system='false']")
-        .map(async (_index, node) => {
-          const message_id = Number($(node).attr('mesid') ?? 'NaN');
-          if (!isNaN(message_id)) {
-            await renderOneMessage(message_id);
-            if (options.trigger_event) {
-              eventEmit(tavern_events.CHARACTER_MESSAGE_RENDERED, message_id, 'rerender');
+    renderAllInProgress = true;
+    try {
+      if (options.destroy_all) {
+        states.forEach(({ destroy }) => destroy());
+      } else {
+        destroyAllInvalid();
+      }
+      await Promise.all(
+        $('#chat')
+          .children(".mes[is_user='false'][is_system='false']")
+          .map(async (_index, node) => {
+            const message_id = Number($(node).attr('mesid') ?? 'NaN');
+            if (!isNaN(message_id)) {
+              await renderOneMessage(message_id);
+              if (options.trigger_event) {
+                eventEmit(tavern_events.CHARACTER_MESSAGE_RENDERED, message_id, 'rerender');
+              }
             }
-          }
-        }),
-    );
+          }),
+      );
+    } finally {
+      renderAllInProgress = false;
+      const next = renderAllQueue.shift();
+      if (next) {
+        next();
+      }
+    }
   };
 
   const stop_list: Array<() => void> = [];
@@ -202,7 +249,7 @@ export function mountStreamingMessages(
     },
     true,
   );
-  [tavern_events.MESSAGE_EDITED, tavern_events.MESSAGE_DELETED].forEach(event =>
+  [tavern_events.MESSAGE_EDITED].forEach(event =>
     scopedEventOn(event, message_id => {
       destroyAllInvalid();
       states.get(message_id)?.destroy();
@@ -212,8 +259,19 @@ export function mountStreamingMessages(
   [tavern_events.MORE_MESSAGES_LOADED, tavern_events.MESSAGE_DELETED].forEach(event =>
     scopedEventOn(event, () => setTimeout(errorCatched(renderAllMessage), 1000)),
   );
+  const debouncedStreamRender = _.debounce(
+    (message: string) => {
+      const $lastMes = $('#chat').children('.mes.last_mes');
+      const message_id = Number($lastMes.attr('mesid'));
+      if (!isNaN(message_id)) {
+        renderOneMessage(message_id, message);
+      }
+    },
+    100,
+    { maxWait: 500 },
+  );
   scopedEventOn(tavern_events.STREAM_TOKEN_RECEIVED, message => {
-    renderOneMessage(Number($('#chat').children('.mes.last_mes').attr('mesid')), message);
+    debouncedStreamRender(message);
   });
 
   if (host === 'div') {
