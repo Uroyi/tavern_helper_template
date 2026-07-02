@@ -4,6 +4,34 @@
   当前地点: 隆德尔城门外
   近期事务:
     进城登记: 前往冒险者工会完成冒险者登记
+  角色出场状态:
+    菲尔:
+      已认识: true
+      在场: true
+    艾莉西亚:
+      已认识: false
+      在场: false
+    赛拉:
+      已认识: false
+      在场: false
+    米莉:
+      已认识: false
+      在场: false
+    艾琳:
+      已认识: false
+      在场: false
+    露露:
+      已认识: false
+      在场: false
+    拉拉:
+      已认识: false
+      在场: false
+    哈尼:
+      已认识: false
+      在场: false
+    玛丽亚:
+      已认识: false
+      在场: false
 
 主线:
   章节: 1

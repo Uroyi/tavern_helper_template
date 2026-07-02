@@ -30,5 +30,20 @@ defineProps<{ html: string }>();
 
   :deep(em) { color: #a0a0c0; }
   :deep(strong) { color: #e0e0f8; }
+
+  /* Chinese double quotes "" — spoken dialogue */
+  :deep(.q-double) {
+    color: #ffcc80;
+  }
+
+  /* Chinese single quotes '' — inner thoughts / emphasis */
+  :deep(.q-single) {
+    color: #90caf9;
+  }
+
+  /* Japanese corner brackets 「」 — quoted text / book titles */
+  :deep(.q-corner) {
+    color: #ce93d8;
+  }
 }
 </style>

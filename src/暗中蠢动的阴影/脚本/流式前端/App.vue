@@ -2,7 +2,7 @@
   <div class="streaming-wrapper">
     <template v-for="(segment, index) in segments" :key="index">
       <!-- Text segment -->
-      <div v-if="segment.type === 'text'" v-html="segment.html" />
+      <NarrativeBox v-if="segment.type === 'text'" :html="segment.html" />
       <!-- Card segments -->
       <LocationCard v-else-if="segment.type === 'location'" v-bind="segment.data" />
       <CharacterCard v-else-if="segment.type === 'character'" v-bind="segment.data" />
@@ -14,9 +14,10 @@
       />
       <QuestCard v-else-if="segment.type === 'quest'" v-bind="segment.data" />
       <SpankCard v-else-if="segment.type === 'spank'" v-bind="segment.data" />
+      <SideQuestEndCard v-else-if="segment.type === 'sidequest_end'" v-bind="segment.data" />
     </template>
     <!-- Fallback: no tags detected, render full message -->
-    <div v-if="!hasAnyCard && context.message" v-html="full_html" />
+    <NarrativeBox v-if="!hasAnyCard && context.message" :html="full_html" />
   </div>
 </template>
 
@@ -29,13 +30,27 @@ import ShopMenuCard from './components/ShopMenuCard.vue';
 import ChoiceCard from './components/ChoiceCard.vue';
 import QuestCard from './components/QuestCard.vue';
 import SpankCard from './components/SpankCard.vue';
+import SideQuestEndCard from './components/SideQuestEndCard.vue';
+import NarrativeBox from './components/NarrativeBox.vue';
 
 const context = injectStreamingMessageContext();
+
+// ── Quote colorization ────────────────────────────────────────────
+
+function colorizeQuotes(html: string): string {
+  // Chinese double quotes “” — spoken dialogue
+  html = html.replace(/“([^”]*)”/g, '<span class="q-double">“$1”</span>');
+  // Chinese single quotes ‘’ — inner thoughts / emphasis
+  html = html.replace(/‘([^’]*)’/g, '<span class="q-single">‘$1’</span>');
+  // Japanese corner brackets 「」 — quoted text / book titles
+  html = html.replace(/「([^」]*)」/g, '<span class="q-corner">「$1」</span>');
+  return html;
+}
 
 // ── Segment types ────────────────────────────────────────────────
 
 interface CardSegment {
-  type: 'location' | 'character' | 'shop' | 'choice' | 'quest' | 'spank';
+  type: 'location' | 'character' | 'shop' | 'choice' | 'quest' | 'spank' | 'sidequest_end';
   data: Record<string, unknown>;
   start: number;
   end: number; // position after closing tag
@@ -141,6 +156,19 @@ function* findQuestCards(msg: string): Generator<CardSegment> {
   }
 }
 
+function* findSideQuestEndCards(msg: string): Generator<CardSegment> {
+  const regex = /<sidequest_end\s+character="([^"]+)"\s+sq="([^"]+)"\s*\/?>/gsi;
+  let match;
+  while ((match = regex.exec(msg)) !== null) {
+    yield {
+      type: 'sidequest_end',
+      data: { character: match[1], sq: match[2] },
+      start: match.index,
+      end: match.index + match[0].length,
+    };
+  }
+}
+
 function* findSpankCards(msg: string): Generator<CardSegment> {
   let pos = 0;
   while (true) {
@@ -175,6 +203,7 @@ const segments = computed<Segment[]>(() => {
     ...findChoiceCards(msg),
     ...findQuestCards(msg),
     ...findSpankCards(msg),
+    ...findSideQuestEndCards(msg),
   ];
 
   // Sort by position in message
@@ -190,7 +219,7 @@ const segments = computed<Segment[]>(() => {
       if (text) {
         result.push({
           type: 'text',
-          html: formatAsDisplayedMessage(text, { message_id: context.message_id }),
+          html: colorizeQuotes(formatAsDisplayedMessage(text, { message_id: context.message_id })),
         });
       }
     }
@@ -222,7 +251,7 @@ const hasAnyCard = computed(() =>
 // ── Fallback full render ──────────────────────────────────────────
 
 const full_html = computed(() =>
-  formatAsDisplayedMessage(context.message, { message_id: context.message_id }),
+  colorizeQuotes(formatAsDisplayedMessage(context.message, { message_id: context.message_id })),
 );
 </script>
 

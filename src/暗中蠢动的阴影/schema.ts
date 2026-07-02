@@ -3,6 +3,20 @@ export const Schema = z.object({
     当前时间: z.string(),
     当前地点: z.string(),
     近期事务: z.record(z.string().describe('事务名'), z.string().describe('事务描述')).transform(obj => ({ ...obj })),
+    角色出场状态: z.record(z.string(), z.object({
+      已认识: z.boolean().prefault(false),
+      在场: z.boolean().prefault(false),
+    })).prefault({
+      菲尔: { 已认识: true, 在场: true },
+      艾莉西亚: { 已认识: false, 在场: false },
+      赛拉: { 已认识: false, 在场: false },
+      米莉: { 已认识: false, 在场: false },
+      艾琳: { 已认识: false, 在场: false },
+      露露: { 已认识: false, 在场: false },
+      拉拉: { 已认识: false, 在场: false },
+      哈尼: { 已认识: false, 在场: false },
+      玛丽亚: { 已认识: false, 在场: false },
+    }),
   }),
 
   主线: z.object({

@@ -21,6 +21,63 @@
             "type": "string",
             "description": "事务描述"
           }
+        },
+        "角色出场状态": {
+          "default": {
+            "菲尔": {
+              "已认识": true,
+              "在场": true
+            },
+            "艾莉西亚": {
+              "已认识": false,
+              "在场": false
+            },
+            "赛拉": {
+              "已认识": false,
+              "在场": false
+            },
+            "米莉": {
+              "已认识": false,
+              "在场": false
+            },
+            "艾琳": {
+              "已认识": false,
+              "在场": false
+            },
+            "露露": {
+              "已认识": false,
+              "在场": false
+            },
+            "拉拉": {
+              "已认识": false,
+              "在场": false
+            },
+            "哈尼": {
+              "已认识": false,
+              "在场": false
+            },
+            "玛丽亚": {
+              "已认识": false,
+              "在场": false
+            }
+          },
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "已认识": {
+                "default": false,
+                "type": "boolean"
+              },
+              "在场": {
+                "default": false,
+                "type": "boolean"
+              }
+            }
+          }
         }
       },
       "required": [
